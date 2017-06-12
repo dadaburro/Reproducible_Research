@@ -2,6 +2,7 @@
 library(reshape2)
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 ```
 
 ## 1.Code for reading in the dataset and/or processing the data
@@ -9,7 +10,7 @@ library(dplyr)
 activity.data <- read.csv("activity.csv")
 ```
 ## 2.Histogram of the total number of steps taken each day
-```{r}
+```{r daysum}
 daily.sum <- aggregate(steps~date, data = activity.data, sum)
 hist(daily.sum$steps)
 ```
@@ -24,7 +25,7 @@ mean(daily.sum$steps)
 
 ## 4.Time series plot of the average number of steps taken
 
-```{r}
+```{r dayseries}
 plot(daily.mean, type = "l", main = "Average number of steps taken per day")
 lines(daily.mean)
 ```
@@ -43,14 +44,14 @@ head(activity.complete)
 ```
 
 ## 7.Histogram of the total number of steps taken each day after missing values are imputed
-```{r}
+```{r fullstep}
 daily.sum.complete <- aggregate(steps~date, data = activity.complete, sum)
 hist(daily.sum.complete$steps, main = "Total number of steps taken each day", xlab = "Steps per day")
 ```
 
 ## 8.Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
 
-```{r}
+```{r panel}
 
 weekday.activity <- group_by(activity.complete, weekdays(as.Date(activity.complete$date)))
 names(weekday.activity) <- c("steps", "date", "interval", "weekday")
