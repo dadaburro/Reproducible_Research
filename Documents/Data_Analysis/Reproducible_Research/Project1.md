@@ -3,6 +3,24 @@
 library(reshape2)
 library(ggplot2)
 library(dplyr)
+library(tidyr)
+```
+
+```
+## 
+## Attaching package: 'tidyr'
+```
+
+```
+## The following object is masked from 'package:reshape2':
+## 
+##     smiths
+```
+
+```
+## The following object is masked from 'package:Matrix':
+## 
+##     expand
 ```
 
 ## 1.Code for reading in the dataset and/or processing the data
